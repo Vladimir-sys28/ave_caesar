@@ -30,6 +30,7 @@ def guessing_words():
         if letter in word:
             s += letter
             print("Вы угадали: ", len(s), "букву")
+            print(s)
         if len(s) == len(word):
             print('Поздравляю! Вы угадали все слово!: ', word)
             break
