@@ -18,25 +18,27 @@ def guessing_words():
             print('Будьте внимательнее! Нужно ввести только одну цифру от 0 до 9!')
     else:
         print('Будьте внимательнее!')
-
+    j = 0
     s = ''
+    print(len(s))
     i = 0
-    v = ''
+    v = ['!', 'O', '/', chr(92), '!', '/', chr(92)]
     while i < len(word):
-        print(len(word))
-
+        print("Всего в загаданном слове ", len(word), "букв")
         letter = input()
-        print(letter)
+        # print(letter)
         if letter in word:
             s += letter
-            # j = 0
+            print("Вы угадали: ", len(s), "букву")
+        if len(s) == len(word):
+            print('Поздравляю! Вы угадали все слово!: ', word)
+            break
         elif letter not in word:
-            v += '!'
-        print(v)
-        i += 1
-    if len(s) == len(word):
-        print(len(s))
-        print('Поздравляю! Вы угадали!: ', word)
+            while j <= len(v):
+                print(v[j])
+                j += 1
+                break
+    i += 1
 
 
 guessing_words()
