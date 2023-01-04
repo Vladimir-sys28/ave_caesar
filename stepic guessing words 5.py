@@ -1,9 +1,10 @@
 import random
+import sys
 
 
 def guessing_words():
     print('Введите любую цифру от 0 до 9: ')
-    num = input()
+
     lst_words = ['год', 'человек', 'время', 'статья', 'день', 'жизнь', 'дело', 'работа', 'вопрос', 'рука', 'город',
                  'слово', 'место', 'ребенок', 'друг', 'усилитель', 'мир', 'случай', 'сторона', 'дом', 'страна', 'сила',
                  'лицо', 'женщина', 'система', 'вид', 'голова', 'проблема', 'конец', 'приход', 'компания', 'история',
@@ -12,13 +13,18 @@ def guessing_words():
                  ]
     word = random.choice(lst_words)
     constanta = word
-    if num.isdigit():
-        if int(num) in range(9):
-            print(word)
-        else:
-            print('Будьте внимательнее! Нужно ввести только одну цифру от 0 до 9!')
-    if not num.isdigit():
-        print('Будьте внимательнее!')
+
+    def fin():
+        num = input()
+        while num:
+            if num.isdigit():
+                return word
+            if num.isalpha():
+                print('Будьте внимательнее! Нужно ввести цифру от 0 до 9! Попробуйте сначала!')
+                return sys.exit(0)
+
+    print(fin())
+
     j = 0
     s = ''
     print(f"Вы угадали: {len(s)} букв из загаданного слова")
@@ -39,12 +45,13 @@ def guessing_words():
             # print(word)
 
         if len(s) == len(constanta):
-            print('Поздравляю! Вы угадали все слово!: ', constanta)
+            print('Поздравляю! Вы угадали все слово!:', constanta)
             break
         if letter not in s:
             def fnc(j):
                 v = ['!', 'O', '/', '/' + chr(92), '!', '/', '/' + chr(92)]
                 return v[j]
+
             dead += fnc(j)
             if j <= 2:
                 print('\n'.join(dead))

@@ -18,12 +18,14 @@ def guessing_words():
             print('Будьте внимательнее! Нужно ввести только одну цифру от 0 до 9!')
     else:
         print('Будьте внимательнее!')
-    j = 0
+    # j = 0
     s = ''
-    print(len(s))
+    print(f'Угадано: {len(s)} букв')
     i = 0
     v = ['!', 'O', '/', chr(92), '!', '/', chr(92)]
     dead = ''
+    k = 0
+
     while i < len(word):
         print("Всего в загаданном слове ", len(word), "букв")
         letter = input()
@@ -36,16 +38,46 @@ def guessing_words():
             print('Поздравляю! Вы угадали все слово!: ', word)
             break
         if letter not in word:
+            j = 0
+            # while j <= len(v):
             while j <= len(v):
-                dead += v[j]
-                if j == 0 or j == 6:
-                    print(dead)
+                for man in range(len(v)):
+                    if man == 0:
+                        sim = '!'
+                        dead += sim
+                        print(sim)
+                        break
+            # for man in v:
+                    if man == 1:
+                        one = man
+                        print(one)
+                        dead += man
+                        break
+            # for man in v:
+            #     if man == '/':
+            #         print(man)
+            #         break
+            # for man in v:
+            #     if man == chr(92):
+            #         hand = '/' + chr(92)
+            #         print(hand)
+            #         dead += hand
+            #         break
 
-                else:
-                    print('\n'.join(dead))
-                j += 1
-                break
+
+            j += 1
+
+                    # dead = ''.join(chr(92))
+                    # print(dead)
+                    # print(j)
+
+                # else:
+                #     dead += v[j]
+                #     print('\n'.join(dead))
+                # j += 1
+                # break
     i += 1
 
 
 guessing_words()
+print(f'Это была твоя крайняя попытка. Начни игру сначала.')

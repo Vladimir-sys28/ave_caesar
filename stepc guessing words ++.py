@@ -11,37 +11,33 @@ def guessing_words():
                  'цель', 'отец', 'правда', 'нога'
                  ]
     word = random.choice(lst_words)
-    constanta = word
     if num.isdigit():
         if int(num) in range(9):
             print(word)
         else:
             print('Будьте внимательнее! Нужно ввести только одну цифру от 0 до 9!')
-    if not num.isdigit():
+    else:
         print('Будьте внимательнее!')
     j = 0
     s = ''
     print(f"Вы угадали: {len(s)} букв из загаданного слова")
     i = 0
+    v = ['!', 'O', '/', chr(92), '!', '/', chr(92)]
     dead = ''
     while i < len(word):
-        print("Осталось угадать: ", len(word), "букв")
+        print("Всего в загаданном слове ", len(word), "букв")
         letter = input()
+        # print(letter)
         if letter in word:
-            print(f"{letter}: {word.count(letter)}")
-            s += letter * (word.count(letter))
-            print(s)
+            s += letter
             print("Вы угадали: ", len(s), "букву")
-            print(f'Вы угадали буквы {s} в загаданном слове')
-            new_word = word.replace(letter, '')
-            # print(new_word)
-            word = new_word
-            # print(word)
-
-        if len(s) == len(constanta):
-            print('Поздравляю! Вы угадали все слово!: ', constanta)
+            print(f'Вы угадали букву {s} в загаданном слове')
+        if len(s) == len(word):
+            print('Поздравляю! Вы угадали все слово!: ', word)
             break
-        if letter not in s:
+        if letter not in word:
+            # print(i)
+            # x = 0
             def fnc(j):
                 v = ['!', 'O', '/', '/' + chr(92), '!', '/', '/' + chr(92)]
                 return v[j]
@@ -69,8 +65,7 @@ def guessing_words():
                 print('/' + chr(92))
                 print('!')
                 print('/' + chr(92))
-                print("К сожалению, вы не смогли угадать слово. Повышайте свой словарный запас "
-                      "и приходите играть с новыми знаниями.")
+                print("К сожалению, вы не смогли угадать слово. Увеличте свой словарный запас и начните игру заново ")
             j += 1
     i += 1
 
