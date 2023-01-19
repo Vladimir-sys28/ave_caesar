@@ -20,7 +20,7 @@ def guessing_words():
         print('Будьте внимательнее!')
     j = 0
     s = ''
-    print(len(s))
+    print(f"Вы угадали: {len(s)} букв из загаданного слова")
     i = 0
     v = ['!', 'O', '/', chr(92), '!', '/', chr(92)]
     dead = ''
@@ -31,20 +31,42 @@ def guessing_words():
         if letter in word:
             s += letter
             print("Вы угадали: ", len(s), "букву")
-            print(s)
+            print(f'Вы угадали букву {s} в загаданном слове')
         if len(s) == len(word):
             print('Поздравляю! Вы угадали все слово!: ', word)
             break
         if letter not in word:
-            while j <= len(v):
-                dead += v[j]
-                if j == 0 or j == 6:
-                    print(dead)
-
-                else:
-                    print('\n'.join(dead))
-                j += 1
-                break
+            # print(i)
+            # x = 0
+            def fnc(j):
+                v = ['!', 'O', '/', '/' + chr(92), '!', '/', '/' + chr(92)]
+                return v[j]
+            dead += fnc(j)
+            if j <= 2:
+                print('\n'.join(dead))
+            if j == 3:
+                new_dead = dead[:2]
+                print('\n'.join(new_dead))
+                print('/' + chr(92))
+            if j == 4:
+                new_dead = dead[:2]
+                print('\n'.join(new_dead))
+                print('/' + chr(92))
+                print('!')
+            if j == 5:
+                new_dead = dead[:2]
+                print('\n'.join(new_dead))
+                print('/' + chr(92))
+                print('!')
+                print('/')
+            if j == 6:
+                new_dead = dead[:2]
+                print('\n'.join(new_dead))
+                print('/' + chr(92))
+                print('!')
+                print('/' + chr(92))
+                print("К сожалению, вы не смогли угадать слово. Увеличте свой словарный запас и начните игру заново ")
+            j += 1
     i += 1
 
 
